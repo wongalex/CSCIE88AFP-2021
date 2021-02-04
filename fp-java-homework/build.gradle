@@ -80,6 +80,7 @@ task("srcZip", type:Zip){
         exclude 'tools'
         exclude '*.zip'
         exclude '*.gradle'
+        exclude '.idea/*'
     }
     destinationDir project.rootDir
 }
