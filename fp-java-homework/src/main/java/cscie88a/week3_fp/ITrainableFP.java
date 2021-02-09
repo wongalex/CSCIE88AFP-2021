@@ -1,7 +1,13 @@
-package cscie88a.week2;
+package cscie88a.week3_fp;
 
-public interface ITrainable {
-	
+@FunctionalInterface
+public interface ITrainableFP {
+
+	/**
+	 * The only abstract method !
+	 * @param trickName
+	 * @return
+	 */
 	public ActionResult doTrick(String trickName);
 
 	default public ActionResult doTrickForTreat(String trickName, String treatName) {
