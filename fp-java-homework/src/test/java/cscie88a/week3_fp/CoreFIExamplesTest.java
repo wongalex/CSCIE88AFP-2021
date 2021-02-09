@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CoreFIExamplesTest {
 
     @Test
-    public void testCalculations(){
+    public void testCalculations() {
         // can be implemented as any FI - via anonymous class
         Function<String, Integer> calcFnSafe = new Function<String, Integer>() {
             @Override
@@ -79,7 +79,7 @@ class CoreFIExamplesTest {
     }
 
     @Test
-    public void testSupplierAndConsumer_anonymous(){
+    public void testSupplierAndConsumer_anonymous() {
         Supplier<AbstractAnimalFP> catSupplier = new Supplier<AbstractAnimalFP>() {
             @Override
             public AbstractAnimalFP get() {
@@ -101,7 +101,7 @@ class CoreFIExamplesTest {
     }
 
     @Test
-    public void testSupplierAndConsumer(){
+    public void testSupplierAndConsumer() {
         Random random = new Random();
         Supplier<AbstractAnimalFP> catSupplier = () -> {
             boolean hasCurrentShots = random.nextBoolean();
@@ -119,5 +119,11 @@ class CoreFIExamplesTest {
         };
 
         CoreFIExamples.chainSupplierAndConsumer(catSupplier, animalConsumer);
+    }
+
+    /******* the following unit test is to be implemented in the HW3 **********/
+    @Test
+    public void testSupplierAndConsumerForAdoption() {
+        //TODO implement this
     }
 }

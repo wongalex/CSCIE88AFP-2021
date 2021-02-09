@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class AdoptionMethodRefTests {
+class AdoptionServiceTest {
 
 	@Test
 	public void testMethodReference_static(){
@@ -27,6 +27,28 @@ class AdoptionMethodRefTests {
 		lilo.setHasCurrentShots(false);
 		result = service.tryToAdopt( lambdaMethodRef );
 		assertEquals(ActionResult.FAILURE, result);
+	}
+
+	/******* following unit tests are to be implemented in the HW3 **********/
+
+	@Test
+	public void testTryToAdopt1(){
+		//TODO implement this
+	}
+
+	@Test
+	public void testTryToAdopt2(){
+		//TODO implement this
+	}
+
+	@Test
+	public void testTryToAdopt1_namedLambda(){
+		//TODO implement this
+	}
+
+	@Test
+	public void testTryToAdopt2_namedLambda(){
+		//TODO implement this
 	}
 
 }

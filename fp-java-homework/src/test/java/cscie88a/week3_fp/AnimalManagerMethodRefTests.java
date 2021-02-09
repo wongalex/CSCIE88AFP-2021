@@ -10,7 +10,7 @@ class AnimalManagerMethodRefTests {
 	 * use static method reference as a Lambda function
 	 */
 	@Test
-	public void testDoRun_static_method(){
+	public void testTrainToRun_static_method(){
 		// TODO implement this
 	}
 
@@ -18,7 +18,7 @@ class AnimalManagerMethodRefTests {
 	 * use instance method reference as a Lambda function
 	 */
 	@Test
-	public void testDoRun_instance_method(){
+	public void testTrainToRun_instance_method(){
 		CatFP sneaky = new CatFP("Sneaky");
 		// TODO implement this
 	}
