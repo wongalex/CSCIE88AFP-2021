@@ -27,4 +27,11 @@ public class Dog extends AbstractAnimal implements ITrainable{
 		return ActionResult.SUCCESS;
 	}
 
+	@Override
+	public ActionResult playWithToy(Toy toy) {
+		System.out.println("I love the toy! Yeah!!!");
+		toy.doFunStuff();
+		return ActionResult.SUCCESS;
+	}
+
 }

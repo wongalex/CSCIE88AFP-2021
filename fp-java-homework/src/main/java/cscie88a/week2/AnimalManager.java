@@ -13,4 +13,8 @@ public class AnimalManager {
 		return hostAnimal.playWithMe(friend);
 	}
 
+	public static ActionResult trainForSuperTricks(ITrainable animalToTrain, String trickName) {
+		return animalToTrain.doSuperTrick(trickName);
+	}
+
 }
