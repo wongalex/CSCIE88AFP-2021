@@ -9,12 +9,14 @@ class AnimalManagerTest {
 
 	private Cat sneaky;
 	private Dog bolt;
+	private Hedgehog sonic;
 	String trickName = "sit";
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		sneaky = new Cat("Sneaky", "blue", "gray");
 		bolt = new Dog("Bolt", "brown", "white");
+		sonic = new Hedgehog("Sonic", "black", "gray");
 	}
 
 	@Test
@@ -28,6 +30,15 @@ class AnimalManagerTest {
 	}
 
 	@Test
+	public void testTrainForSuperTricks() {
+		ActionResult result = AnimalManager.trainForSuperTricks(bolt, trickName);
+		assertEquals(ActionResult.FAILURE, result);
+
+		result = AnimalManager.trainForSuperTricks(sneaky, trickName);
+		assertEquals(ActionResult.FAILURE, result);
+	}
+
+	@Test
 	public void testDoTrick_anonymous_from_interface() {
 		ActionResult result = AnimalManager.trainForTricks(
 				new ITrainable() {
@@ -36,6 +47,25 @@ class AnimalManagerTest {
 						return ActionResult.SUCCESS;
 					}
 				}, 
+				trickName);
+		assertEquals(ActionResult.SUCCESS, result);
+	}
+
+	@Test
+	public void testTrainForSuperTricks_anonymous() {
+		ActionResult result = AnimalManager.trainForSuperTricks(
+				new ITrainable() {
+					@Override
+					public ActionResult doTrick(String trickName) {
+						System.out.println("I always do tricks!");
+						return ActionResult.SUCCESS;
+					}
+
+					public ActionResult doSuperTrick(String trickName) {
+						System.out.println("I AM a super hero! I can do a super trick!");
+						return ActionResult.SUCCESS;
+					}
+				},
 				trickName);
 		assertEquals(ActionResult.SUCCESS, result);
 	}

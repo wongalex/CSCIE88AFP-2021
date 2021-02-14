@@ -9,4 +9,13 @@ public interface ITrainable {
 			" and will happily do the trick [" + trickName + "] !!");
 		return ActionResult.SUCCESS;
 	}
+<<<<<<< Updated upstream
+=======
+
+	default public ActionResult doSuperTrick(String trickName) {
+		System.out.println("I'm not a Superhero, can't do super trick!");
+		return ActionResult.FAILURE;
+	}
+
+>>>>>>> Stashed changes
 }

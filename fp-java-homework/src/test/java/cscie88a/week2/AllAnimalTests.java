@@ -9,19 +9,34 @@ class AllAnimalTests {
 
 	private Cat sneaky;
 	private Dog bolt;
+	private Hedgehog sonic;
+	private Toy squeakyToy;
+	private Toy notSqueakyToy;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		sneaky = new Cat("Sneaky", "blue", "gray");
 		bolt = new Dog("Bolt", "brown", "whity");
+		sonic = new Hedgehog("Sonic", "black", "gray");
+		squeakyToy = new Toy(true, false, false);
+		notSqueakyToy = new Toy(false, false, false);
+
 	}
 
 	@Test
-	void testTakeMedicine() {		
-		assertTrue(bolt.takeMedicine(true));
-		assertFalse(bolt.takeMedicine(false));
-		assertFalse(sneaky.takeMedicine(true));
-		assertFalse(sneaky.takeMedicine(false));
+	public void testTakeMedicine() {
+		assertEquals(ActionResult.SUCCESS, bolt.takeMedicine(true));
+		assertEquals(ActionResult.FAILURE, bolt.takeMedicine(false));
+		assertEquals(ActionResult.FAILURE, sneaky.takeMedicine(true));
+		assertEquals(ActionResult.FAILURE, sneaky.takeMedicine(false));
+	}
+
+	@Test
+	public void testPlayWithToy() {
+		assertEquals(ActionResult.SUCCESS, sneaky.playWithToy(squeakyToy));
+		assertEquals(ActionResult.FAILURE, sneaky.playWithToy(notSqueakyToy));
+		assertEquals(ActionResult.SUCCESS, bolt.playWithToy(squeakyToy));
+		assertEquals(ActionResult.SUCCESS, bolt.playWithToy(notSqueakyToy));
 	}
 
 	@Test
@@ -29,6 +44,12 @@ class AllAnimalTests {
 		String humanName = "Marina";
 		sneaky.sayHiToHuman(humanName);
 		bolt.sayHiToHuman(humanName);
+	}
+
+	@Test
+	public void testWhoAreYou() {
+		System.out.println(sneaky.whoAreYou());
+		System.out.println(bolt.whoAreYou());
 	}
 
 	@Test
@@ -71,5 +92,14 @@ class AllAnimalTests {
 		// dog will play with anybody, always
 		result = bolt.playWithMe(sneaky);
 		assertEquals(ActionResult.SUCCESS, result);
+	}
+
+	@Test
+	public void testPlayWithMeForHedgehog() {
+		ActionResult result = sonic.playWithMe(bolt);
+		assertEquals(ActionResult.FAILURE, result);
+
+		result = sonic.playWithMe(sneaky);
+		assertEquals(ActionResult.FAILURE, result);
 	}
 }
