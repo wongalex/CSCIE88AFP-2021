@@ -33,22 +33,38 @@ class AdoptionServiceTest {
 
 	@Test
 	public void testTryToAdopt1(){
-		//TODO implement this
+		AdoptionService service = new AdoptionService();
+		ActionResult result = service.tryToAdopt(
+				() -> true
+		);
+		assertEquals(ActionResult.SUCCESS, result);
 	}
 
 	@Test
 	public void testTryToAdopt2(){
-		//TODO implement this
+		AdoptionService service = new AdoptionService();
+		ActionResult result = service.tryToAdopt2((healthCheckDone) -> healthCheckDone, true);
+		assertEquals(ActionResult.SUCCESS, result);
+		result = service.tryToAdopt2((healthCheckDone) -> healthCheckDone, false);
+		assertEquals(ActionResult.FAILURE, result);
 	}
 
 	@Test
 	public void testTryToAdopt1_namedLambda(){
-		//TODO implement this
+		AdoptionService service = new AdoptionService();
+		IAdoptable lambdaForI1 = () -> true;
+		ActionResult result = service.tryToAdopt(lambdaForI1);
+		assertEquals(ActionResult.SUCCESS, result);
 	}
 
 	@Test
 	public void testTryToAdopt2_namedLambda(){
-		//TODO implement this
+		AdoptionService service = new AdoptionService();
+		IAdoptable2 lambdaForI2 = healthCheckDone -> healthCheckDone;
+		ActionResult result = service.tryToAdopt2(lambdaForI2, true);
+		assertEquals(ActionResult.SUCCESS, result);
+		result = service.tryToAdopt2(lambdaForI2, false);
+		assertEquals(ActionResult.FAILURE, result);
 	}
 
 }

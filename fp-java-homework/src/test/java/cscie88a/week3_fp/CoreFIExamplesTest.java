@@ -124,6 +124,28 @@ class CoreFIExamplesTest {
     /******* the following unit test is to be implemented in the HW3 **********/
     @Test
     public void testSupplierAndConsumerForAdoption() {
-        //TODO implement this
+        Random random = new Random();
+        Supplier<AbstractAnimalFP> catAndDogSupplier = () -> {
+            boolean isCat = random.nextBoolean();
+            if (isCat) {
+                CatFP newCat = new CatFP("SupplierCat");
+                newCat.setGoodMood(random.nextBoolean());
+                return newCat;
+            } else {
+                DogFP newDog = new DogFP("SupplierDog");
+                return newDog;
+            }
+        };
+
+        Consumer<AbstractAnimalFP> consumerForTraining = animal -> {
+            ActionResult result = animal.doTrick("any trick");
+            if (result == ActionResult.SUCCESS) {
+                System.out.println("I will accept this animal for training");
+            } else {
+                System.out.println("I will NOT accept this animal for trianing");
+            }
+        };
+
+        CoreFIExamples.chainSupplierAndConsumer(catAndDogSupplier, consumerForTraining);
     }
 }
