@@ -11,7 +11,9 @@ class AnimalManagerMethodRefTests {
 	 */
 	@Test
 	public void testTrainToRun_static_method(){
-		// TODO implement this
+		ITrainableFP lambdaMethodRef = AbstractAnimalFP::doTrickStatic;
+		ActionResult result = AnimalManagerFP.trainToRun(lambdaMethodRef);
+		assertEquals(ActionResult.FAILURE, result);
 	}
 
 	/**
@@ -20,7 +22,14 @@ class AnimalManagerMethodRefTests {
 	@Test
 	public void testTrainToRun_instance_method(){
 		CatFP sneaky = new CatFP("Sneaky");
-		// TODO implement this
+		sneaky.setGoodMood(true);
+		ITrainableFP lambdaMethodRef = sneaky::doTrick;
+		ActionResult result = AnimalManagerFP.trainToRun(lambdaMethodRef);
+		assertEquals(ActionResult.SUCCESS, result);
+
+		sneaky.setGoodMood(false);
+		result = AnimalManagerFP.trainToRun(lambdaMethodRef);
+		assertEquals(ActionResult.FAILURE, result);
 	}
 
 }

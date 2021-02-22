@@ -60,4 +60,8 @@ public abstract class AbstractAnimalFP {
 	public String toString() {
 		return "I am an animal of type = " + animalType + "; my name: " + name;
 	}
+
+	public ActionResult doTrick(String s) {
+		return ActionResult.FAILURE;
+	}
 }
