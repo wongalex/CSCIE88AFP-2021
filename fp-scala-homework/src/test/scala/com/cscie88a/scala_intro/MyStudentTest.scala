@@ -11,4 +11,12 @@ class MyStudentTest extends StandardTest {
       emptyList.size should be (0)
     }
   }
+
+  "greet in MyStudent" should {
+    "greet me in all uppercase" in {
+      MyStudent.greet shouldBe "Hello ALEX WONG"
+    }
+  }
+
+
 }
